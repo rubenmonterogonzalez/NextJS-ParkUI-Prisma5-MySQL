@@ -6,19 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "panda codegen",
+    "ui:dev": "npx ladle serve --stories=./src/**/*.stories.tsx",
+    "ui:build": "npx ladle build --stories=./src/**/*.stories.tsx",
+    "ui:preview": "npx ladle preview"
   },
   "dependencies": {
+    "@ark-ui/react": "^0.15.0",
+    "@ladle/react": "^3.2.2",
+    "@park-ui/panda-preset": "^0.19.0",
+    "lucide-react": "^0.288.0",
+    "next": "13.5.6",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "13.5.6"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@pandacss/dev": "^0.16.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "13.5.6"
+    "eslint-config-next": "13.5.6",
+    "typescript": "^5"
   }
 }

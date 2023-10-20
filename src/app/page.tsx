@@ -1,95 +1,59 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { ChevronDownIcon } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "~/components/accordion"
+import { Button } from "~/components/button";
+import { Icon } from "~/components/icon";
+import { css } from "~/styled-system/css"
 
-export default function Home() {
+export default function Home ({
+  props,
+  children
+}: {
+  props: any;
+  children: any;
+})  {
+  const items = ["React", "Solid", "Vue"];
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div className={css({})}>
+      <Accordion defaultValue={["React"]} multiple {...props}>
+        {items.map((item, id) => (
+          <AccordionItem key={id} value={item}>
+            {({ isOpen }) => (
+              <>
+                <AccordionTrigger>
+                  {item}
+                  <AccordionIcon isOpen={isOpen} />
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div>
+                    Pudding donut gummies chupa chups oat cake marzipan biscuit
+                    tart. Dessert macaroon ice cream bonbon jelly. Jelly topping
+                    tiramisu halvah lollipop.
+                  </div>
+                </AccordionContent>
+              </>
+            )}
+          </AccordionItem>
+        ))}
+      </Accordion>
+      <Button>First</Button>
+    </div>
   )
 }
+
+
+
+
+
+const AccordionIcon = (props: { isOpen: boolean }) => {
+  const iconStyles = {
+    transform: props.isOpen ? "rotate(-180deg)" : undefined,
+    transition: "transform 0.2s",
+    transformOrigin: "center"
+  };
+  return (
+    <Icon style={iconStyles}>
+      <ChevronDownIcon />
+    </Icon>
+  );
+};
