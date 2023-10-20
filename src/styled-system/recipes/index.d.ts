@@ -1,5 +1,4 @@
 /* eslint-disable */
-export * from './article';
 export * from './badge';
 export * from './button';
 export * from './code';

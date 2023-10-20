@@ -1,6 +1,6 @@
 @layer base {
   :root {
-    --made-with-panda: '🐼'
+    --made-with-panda: '🐼';
     }
 
   *, *::before, *::after, ::backdrop {
@@ -31,6 +31,34 @@
     --skew-x: 0;
     --skew-y: 0;
     --scale-x: 1;
-    --scale-y: 1
+    --scale-y: 1;
+    }
+
+  html {
+    line-height: 1.5;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    }
+
+  body {
+    background: var(--colors-bg-canvas);
+    color: var(--colors-fg-default);
+    }
+
+  body.dark, .dark body {
+    color-scheme: dark;
+    }
+
+  *, *::before, *::after {
+    border-color: var(--colors-border-default);
+    border-style: solid;
+    box-sizing: border-box;
+    }
+
+  *::placeholder {
+    opacity: 1;
+    color: var(--colors-fg-subtle);
     }
 }

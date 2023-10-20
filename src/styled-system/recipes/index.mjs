@@ -1,4 +1,3 @@
-export * from './article.mjs';
 export * from './badge.mjs';
 export * from './button.mjs';
 export * from './code.mjs';

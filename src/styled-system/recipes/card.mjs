@@ -14,8 +14,8 @@ const cardSlotNames = [
     "card__header"
   ],
   [
-    "content",
-    "card__content"
+    "body",
+    "card__body"
   ],
   [
     "footer",

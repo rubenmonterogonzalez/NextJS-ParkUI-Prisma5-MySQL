@@ -1,23 +1,32 @@
-import * as Ark from '@ark-ui/react/tabs'
+import * as Ark from '@ark-ui/react/tags-input'
 import { styled } from '~/styled-system/jsx'
-import { tabs, type TabsVariantProps } from '~/styled-system/recipes'
+import { tagsInput, type TagsInputVariantProps } from '~/styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
-const { withProvider, withContext } = createStyleContext(tabs)
+const { withProvider, withContext } = createStyleContext(tagsInput)
 
-export * from '@ark-ui/react/tabs'
-export type TabsProps = Ark.TabsProps & TabsVariantProps
+export * from '@ark-ui/react/tags-input'
+export type TagsInputProps = Ark.TagsInputProps & TagsInputVariantProps
 
-const TabsRoot = withProvider(styled(Ark.Tabs.Root), 'root')
-export const TabContent = withContext(styled(Ark.Tabs.Content), 'content')
-export const TabIndicator = withContext(styled(Ark.Tabs.Indicator), 'indicator')
-export const TabList = withContext(styled(Ark.Tabs.List), 'list')
-export const TabTrigger = withContext(styled(Ark.Tabs.Trigger), 'trigger')
+const TagsInputRoot = withProvider(styled(Ark.TagsInput.Root), 'root')
+export const TagsInputClearTrigger = withContext(styled(Ark.TagsInput.ClearTrigger), 'clearTrigger')
+export const TagsInputControl = withContext(styled(Ark.TagsInput.Control), 'control')
+export const TagsInputInput = withContext(styled(Ark.TagsInput.Input), 'input')
+export const TagsInputLabel = withContext(styled(Ark.TagsInput.Label), 'label')
+export const Tag = withContext(styled(Ark.TagsInput.Tag), 'tag')
+export const TagInput = withContext(styled(Ark.TagsInput.TagInput), 'tagInput')
+export const TagDeleteTrigger = withContext(
+  styled(Ark.TagsInput.TagDeleteTrigger),
+  'tagDeleteTrigger',
+)
 
-export const Tabs = Object.assign(TabsRoot, {
-  Root: TabsRoot,
-  Content: TabContent,
-  Indicator: TabIndicator,
-  List: TabList,
-  Trigger: TabTrigger,
+export const TagsInput = Object.assign(TagsInputRoot, {
+  Root: TagsInputRoot,
+  ClearTrigger: TagsInputClearTrigger,
+  Control: TagsInputControl,
+  Input: TagsInputInput,
+  Label: TagsInputLabel,
+  Tag: Tag,
+  TagInput: TagInput,
+  TagDeleteTrigger: TagDeleteTrigger,
 })

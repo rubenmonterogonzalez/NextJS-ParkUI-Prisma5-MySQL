@@ -1,5 +1,6 @@
 import React from "react";
 import type { Story } from "@ladle/react";
+// @ts-ignore
 import { ChevronDownIcon } from "lucide-react";
 import {
   Accordion,
@@ -8,10 +9,8 @@ import {
   AccordionTrigger
 } from "./index";
 import { Icon } from "~/components/icon";
-
 export const accordion: Story = ({ children, ...props }: any) => {
   const items = ["React", "Solid", "Vue"];
-
   return (
     <Accordion defaultValue={["React"]} multiple {...props}>
       {items.map((item, id) => (

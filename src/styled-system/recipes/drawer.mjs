@@ -34,6 +34,18 @@ const drawerSlotNames = [
   [
     "closeTrigger",
     "drawer__closeTrigger"
+  ],
+  [
+    "header",
+    "drawer__header"
+  ],
+  [
+    "body",
+    "drawer__body"
+  ],
+  [
+    "footer",
+    "drawer__footer"
   ]
 ]
 const drawerSlotFns = /* @__PURE__ */ drawerSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, drawerDefaultVariants, getSlotCompoundVariant(drawerCompoundVariants, slotName))])

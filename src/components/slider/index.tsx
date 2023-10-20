@@ -1,39 +1,31 @@
-import * as Ark from '@ark-ui/react/select'
+import * as Ark from '@ark-ui/react/slider'
 import { styled } from '~/styled-system/jsx'
-import { select, type SelectVariantProps } from '~/styled-system/recipes'
+import { slider, type SliderVariantProps } from '~/styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
-const { withProvider, withContext } = createStyleContext(select)
+const { withProvider, withContext } = createStyleContext(slider)
 
-export * from '@ark-ui/react/select'
-export type SelectProps<T extends Ark.CollectionItem> = Ark.SelectProps<T> & SelectVariantProps
+export * from '@ark-ui/react/slider'
+export type SliderProps = Ark.SliderProps & SliderVariantProps
 
-const SelectRoot = withProvider(styled(Ark.Select.Root), 'root')
-export const SelectClearTrigger = withContext(styled(Ark.Select.ClearTrigger), 'clearTrigger')
-export const SelectContent = withContext(styled(Ark.Select.Content), 'content')
-export const SelectControl = withContext(styled(Ark.Select.Control), 'control')
-export const SelectItem = withContext(styled(Ark.Select.Item), 'item')
-export const SelectItemGroup = withContext(styled(Ark.Select.ItemGroup), 'itemGroup')
-export const SelectItemGroupLabel = withContext(styled(Ark.Select.ItemGroupLabel), 'itemGroupLabel')
-export const SelectItemIndicator = withContext(styled(Ark.Select.ItemIndicator), 'itemIndicator')
-export const SelectItemText = withContext(styled(Ark.Select.ItemText), 'itemText')
-export const SelectLabel = withContext(styled(Ark.Select.Label), 'label')
-export const SelectPositioner = withContext(styled(Ark.Select.Positioner), 'positioner')
-export const SelectTrigger = withContext(styled(Ark.Select.Trigger), 'trigger')
-export const SelectValue = withContext(styled(Ark.Select.Value), 'value')
+const SliderRoot = withProvider(styled(Ark.Slider.Root), 'root')
+export const SliderControl = withContext(styled(Ark.Slider.Control), 'control')
+export const SliderLabel = withContext(styled(Ark.Slider.Label), 'label')
+export const SliderMarker = withContext(styled(Ark.Slider.Marker), 'marker')
+export const SliderMarkerGroup = withContext(styled(Ark.Slider.MarkerGroup), 'markerGroup')
+export const SliderOutput = withContext(styled(Ark.Slider.Output), 'output')
+export const SliderRange = withContext(styled(Ark.Slider.Range), 'range')
+export const SliderThumb = withContext(styled(Ark.Slider.Thumb), 'thumb')
+export const SliderTrack = withContext(styled(Ark.Slider.Track), 'track')
 
-export const Select = Object.assign(SelectRoot, {
-  Root: SelectRoot,
-  ClearTrigger: SelectClearTrigger,
-  Content: SelectContent,
-  Control: SelectControl,
-  Item: SelectItem,
-  ItemGroup: SelectItemGroup,
-  ItemGroupLabel: SelectItemGroupLabel,
-  ItemIndicator: SelectItemIndicator,
-  ItemText: SelectItemText,
-  Label: SelectLabel,
-  Positioner: SelectPositioner,
-  Trigger: SelectTrigger,
-  Value: SelectValue,
+export const Slider = Object.assign(SliderRoot, {
+  Root: SliderRoot,
+  Control: SliderControl,
+  Label: SliderLabel,
+  Marker: SliderMarker,
+  MarkerGroup: SliderMarkerGroup,
+  Output: SliderOutput,
+  Range: SliderRange,
+  Thumb: SliderThumb,
+  Track: SliderTrack,
 })

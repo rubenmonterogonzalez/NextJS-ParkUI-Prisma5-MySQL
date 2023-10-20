@@ -17,7 +17,7 @@ export type DrawerVariantProps = {
 
 export interface DrawerRecipe {
   __type: DrawerVariantProps
-  (props?: DrawerVariantProps): Pretty<Record<"trigger" | "backdrop" | "container" | "content" | "title" | "description" | "closeTrigger", string>>
+  (props?: DrawerVariantProps): Pretty<Record<"trigger" | "backdrop" | "container" | "content" | "title" | "description" | "closeTrigger" | "header" | "body" | "footer", string>>
   raw: (props?: DrawerVariantProps) => DrawerVariantProps
   variantMap: DrawerVariantMap
   variantKeys: Array<keyof DrawerVariant>

@@ -649,4 +649,5 @@ export interface SystemProperties {
 	srOnly?: PropertyValue<'srOnly'>
 	debug?: PropertyValue<'debug'>
 	colorPalette?: PropertyValue<'colorPalette'>
+	textStyle?: PropertyValue<'textStyle'>
 }
