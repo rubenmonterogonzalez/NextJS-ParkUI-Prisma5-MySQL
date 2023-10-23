@@ -1,67 +1,99 @@
 "use client";
-
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import LoadingDots from "~/components/loading-dots";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function Form({ type }: { type: "login" | "register" }) {
+type FormType = "login" | "register";
+
+export default function Form({ type }: { type: FormType }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    if (type === "login") {
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
+
+      const result = await signIn("credentials", {
+        redirect: false,
+        name,
+        email,
+        password,
+      });
+
+      if (result) {
+        if (result.error) {
+          setLoading(false);
+          toast.error(result.error);
+        } else {
+          router.refresh();
+          router.push("/dashboard");
+        }
+      }
+    } else {
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
+
+      try {
+        const response = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        });
+
+        if (response.status === 200) {
+          toast.success("Account created! Redirecting to login...");
+          setTimeout(() => {
+            router.push("/login");
+          }, 2000);
+        } else {
+          const { error } = await response.json();
+          toast.error(error);
+        }
+      } catch (error) {
+        toast.error("An error occurred while registering.");
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setLoading(true);
-        if (type === "login") {
-          signIn("credentials", {
-            redirect: false,
-            email: e.currentTarget.email.value,
-            password: e.currentTarget.password.value,
-            // @ts-ignore
-          }).then(({ error }) => {
-            if (error) {
-              setLoading(false);
-              toast.error(error);
-            } else {
-              router.refresh();
-              router.push("/protected");
-            }
-          });
-        } else {
-          fetch("/api/auth/register", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: e.currentTarget.email.value,
-              password: e.currentTarget.password.value,
-            }),
-          }).then(async (res) => {
-            setLoading(false);
-            if (res.status === 200) {
-              toast.success("Account created! Redirecting to login...");
-              setTimeout(() => {
-                router.push("/login");
-              }, 2000);
-            } else {
-              const { error } = await res.json();
-              toast.error(error);
-            }
-          });
-        }
-      }}
-      className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
+      onSubmit={handleSubmit}
     >
+      {type === "register" && ( // Conditional rendering for registration form
+        <div>
+          <label htmlFor="name">
+            User Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+          />
+        </div>
+      )}
       <div>
-        <label
-          htmlFor="email"
-          className="block text-xs text-gray-600 uppercase"
-        >
+        <label htmlFor="email">
           Email Address
         </label>
         <input
@@ -71,14 +103,10 @@ export default function Form({ type }: { type: "login" | "register" }) {
           placeholder="panic@thedis.co"
           autoComplete="email"
           required
-          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
       <div>
-        <label
-          htmlFor="password"
-          className="block text-xs text-gray-600 uppercase"
-        >
+        <label htmlFor="password">
           Password
         </label>
         <input
@@ -86,7 +114,6 @@ export default function Form({ type }: { type: "login" | "register" }) {
           name="password"
           type="password"
           required
-          className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
         />
       </div>
       <button
@@ -103,15 +130,15 @@ export default function Form({ type }: { type: "login" | "register" }) {
         )}
       </button>
       {type === "login" ? (
-        <p className="text-center text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
+        <p>
+          Don`t have an account?{" "}
           <Link href="/register" className="font-semibold text-gray-800">
             Sign up
           </Link>{" "}
           for free.
         </p>
       ) : (
-        <p className="text-center text-sm text-gray-600">
+        <p>
           Already have an account?{" "}
           <Link href="/login" className="font-semibold text-gray-800">
             Sign in
