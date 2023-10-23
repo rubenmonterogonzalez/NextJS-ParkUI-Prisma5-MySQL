@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import AuthStatus from "~/components/auth-status";
 import { Suspense } from "react";
+import { Providers } from '~/components/second-prisma/providers'
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,11 +35,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Toaster />
-        <Suspense fallback="Loading...">
-          <AuthStatus />
-        </Suspense>
-        {children}
+        <Providers>
+          <Toaster />
+          <Suspense fallback="Loading...">
+            <AuthStatus />
+          </Suspense>
+          {children}
+        </Providers>
       </body>
     </html>
   );
