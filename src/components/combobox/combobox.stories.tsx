@@ -28,7 +28,7 @@ const data = [
   { label: 'Vue', value: 'vue' },
 ]
 
-export const combobox: Story = (props: ComboboxProps<CollectionItem>) => {
+export const ComboboxComponent: Story = (props: ComboboxProps<CollectionItem>) => {
   const [items, setItems] = useState(data)
 
   const handleChange = (e: any) => {
