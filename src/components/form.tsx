@@ -10,6 +10,8 @@ import { Label } from "~/components/ui/label";
 import { Typography } from "~/components/ui/typography";
 import { Button } from "~/components/ui/button";
 
+//this is a PR
+
 type FormType = "login" | "register";
 
 export default function Form({ type }: { type: FormType }) {
