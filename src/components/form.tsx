@@ -5,6 +5,10 @@ import LoadingDots from "~/components/loading-dots";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
+import { Typography } from "~/components/ui/typography";
+import { Button } from "~/components/ui/button";
 
 type FormType = "login" | "register";
 
@@ -78,73 +82,69 @@ export default function Form({ type }: { type: FormType }) {
     <form
       onSubmit={handleSubmit}
     >
-      {type === "register" && ( // Conditional rendering for registration form
-        <div>
-          <label htmlFor="name">
-            User Name
-          </label>
-          <input
+      {type === "register" && (
+        <>
+          <Label htmlFor="name">
+            Username
+          </Label>
+          <Input
             id="name"
             name="name"
             type="text"
             autoComplete="name"
             required
           />
-        </div>
+        </>
       )}
-      <div>
-        <label htmlFor="email">
-          Email Address
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="panic@thedis.co"
-          autoComplete="email"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          required
-        />
-      </div>
-      <button
+      <Label htmlFor="email">
+        Email Address
+      </Label>
+      <Input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="panic@thedis.co"
+        autoComplete="email"
+        required
+      />
+      <Label htmlFor="password">
+        Password
+      </Label>
+      <Input
+        id="password"
+        name="password"
+        type="password"
+        required
+      />
+      <Button
         disabled={loading}
         className={`${loading
-            ? "cursor-not-allowed border-gray-200 bg-gray-100"
-            : "border-black bg-black text-white hover:bg-white hover:text-black"
+          ? "cursor-not-allowed border-gray-200 bg-gray-100"
+          : "border-black bg-black text-white hover:bg-white hover:text-black"
           } flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none`}
       >
         {loading ? (
           <LoadingDots color="#808080" />
         ) : (
-          <p>{type === "login" ? "Sign In" : "Sign Up"}</p>
+          <Typography>{type === "login" ? "Sign In" : "Sign Up"}</Typography>
         )}
-      </button>
+      </Button>
       {type === "login" ? (
-        <p>
+        <Typography>
           Don`t have an account?{" "}
-          <Link href="/register" className="font-semibold text-gray-800">
+          <Link href="/register">
             Sign up
           </Link>{" "}
           for free.
-        </p>
+        </Typography>
       ) : (
-        <p>
+        <Typography>
           Already have an account?{" "}
-          <Link href="/login" className="font-semibold text-gray-800">
+          <Link href="/login">
             Sign in
           </Link>{" "}
           instead.
-        </p>
+        </Typography>
       )}
     </form>
   );
