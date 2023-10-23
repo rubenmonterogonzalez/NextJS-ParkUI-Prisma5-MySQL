@@ -1,14 +1,3 @@
-// import { LogoutButton } from "~/components/second-prisma/auth";
-
-// export default async function Dashboard() {
-//   return (
-//     <>
-//       <div>Welcome to the Dashboard</div>
-//       <LogoutButton />
-//     </>
-//   )
-// }
-
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { LogoutButton } from '~/components/second-prisma/auth'
