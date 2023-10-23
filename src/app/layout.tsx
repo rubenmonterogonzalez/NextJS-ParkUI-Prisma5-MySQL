@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 import AuthStatus from "~/components/auth-status";
 import { Suspense } from "react";
 import { Providers } from '~/components/second-prisma/providers'
-import './globals.css'
+import '~/styles/globals.css'
 
 const inter = Inter({
   variable: "--font-inter",

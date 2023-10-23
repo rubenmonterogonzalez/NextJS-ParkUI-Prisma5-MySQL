@@ -28,7 +28,7 @@ const data = [
   { label: 'Vue', value: 'vue' },
 ]
 
-export const combobox: Story = (props: ComboboxProps<CollectionItem>) => {
+export const Comboboxbox: Story = (props) => {
   const [items, setItems] = useState(data)
 
   const handleChange = (e: any) => {
@@ -37,7 +37,7 @@ export const combobox: Story = (props: ComboboxProps<CollectionItem>) => {
   }
 
   return (
-    <Combobox width="2xs" onInputChange={handleChange} {...props} items={items}>
+    <Combobox width="2xs" onInputChange={handleChange} items={items} {...props}>
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput placeholder="Select a Framework" asChild>
@@ -70,8 +70,7 @@ export const combobox: Story = (props: ComboboxProps<CollectionItem>) => {
   )
 }
 
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    title: "Combobox"
+  title: "Combobox"
 };
