@@ -52,3 +52,49 @@ cd NextJS-ParkUI-Prisma5-MySQL
 # Install dependencies
 npm install
 ```
+
+### Project Structure
+
+```
+├── src/
+│   ├── pages/          # Next.js pages
+│   ├── components/     # Reusable components
+│   ├── api/            # API endpoints
+│   ├── prisma/         # Prisma database models and migrations
+├── public/              # Static assets
+├── config/              # Configuration files
+├── .env.example         # Example environment variables file
+├── ...
+```
+### Configuration
+
+Before running the project, you need to configure it. Copy the example environment variables file and adjust the values as needed.
+
+Create a copy of the example environment variables file:
+``````
+cp .env.example .env
+Open the .env file and update the following variables:
+``````
+DATABASE_URL: Set the connection URL to your MySQL database. Replace username, password, localhost, 3306, and database_name with your MySQL server details.
+
+``````
+# .env.example
+DATABASE_URL="mysql://username:password@localhost:3306/database_name"
+``````
+
+### Usage
+
+
+
+### Contributing
+We welcome contributions from the community. If you'd like to contribute to this project, please follow these guidelines:
+
+Fork the repository and create your branch from main.
+Ensure your code follows our coding standards and conventions.
+Submit a pull request describing your changes, the problem you're solving, and any relevant information.
+Please note that we have a code of conduct. Please follow it in all your interactions with the project.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Including these sections in your README will make it more comprehensive and informative for users and potential contributors.
