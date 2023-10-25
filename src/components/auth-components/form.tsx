@@ -1,7 +1,7 @@
 "use client";
 import { useState, FormEvent } from "react";
 import { signIn } from "next-auth/react";
-import LoadingDots from "~/components/loading-dots";
+import LoadingDots from "~/components/auth-components/loading-components/loading-dots";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

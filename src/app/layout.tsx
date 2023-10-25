@@ -1,9 +1,9 @@
 import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import AuthStatus from "~/components/auth-status";
+import AuthStatus from "~/components/auth-components/auth-status";
 import { Suspense } from "react";
-import { Providers } from '~/components/second-prisma/providers'
+import { Providers } from '~/providers/providers'
 import '~/styles/globals.css'
 
 const inter = Inter({

@@ -1,4 +1,4 @@
-import { LogoutButton } from '~/components/second-prisma/auth'
+import { LogoutButton } from '~/components/auth-components/logButtons'
 import Link from 'next/link'
 import { Button } from '~/components/ui/button'
 import { getServerSession } from "next-auth/next";

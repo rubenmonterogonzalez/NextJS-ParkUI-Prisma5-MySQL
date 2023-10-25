@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { LogoutButton } from '~/components/second-prisma/auth'
+import { LogoutButton } from '~/components/auth-components/logButtons'
 import { Typography } from '~/components/ui/typography'
 import { authOptions } from '~/lib/auth-options'
 
