@@ -5,6 +5,7 @@ import AuthStatus from "~/components/auth-components/auth-status";
 import { Suspense } from "react";
 import { Providers } from '~/providers/providers'
 import '~/styles/globals.css'
+import Navbar from "~/components/navigation/navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,8 +29,9 @@ export default async function RootLayout({
           <Toaster />
           <Suspense fallback="Loading...">
             <AuthStatus />
+            <Navbar />
+              {children}
           </Suspense>
-          {children}
         </Providers>
       </body>
     </html>
