@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import prisma from '~/lib/prisma'
+import { prisma } from "~/lib/prisma";
 
-export async function GET(): Promise<NextResponse<unknown>> {
-  const tasks = await prisma?.task.findMany()
+export async function GET(request: Request): Promise<NextResponse<unknown>> {
+  const tasks = await prisma?.task.findMany();
   return NextResponse.json(tasks);
 }
 
-export async function POST(request: { json: () => any; }): Promise<NextResponse<unknown>> {
+export async function POST(request: Request): Promise<NextResponse<unknown>> {
   const { title, description } = await request.json();
   const newTask = await prisma?.task.create({
     data: {

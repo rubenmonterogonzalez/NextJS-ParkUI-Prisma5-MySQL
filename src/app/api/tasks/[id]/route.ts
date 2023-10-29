@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "~/lib/prisma";
 
 export async function GET(request: Request, { params }: { params: { id: string } }): Promise<NextResponse<unknown>> {
   const task = await prisma?.task.findUnique({
